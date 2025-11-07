@@ -1,0 +1,67 @@
+/* Card brand icons horizontal display */
+.antom-horizontal-card-types {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+}
+
+.antom-horizontal-card-types .item {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.antom-horizontal-card-types .item img {
+    width: 50px;
+    height: 50px;
+}
+
+.antom-horizontal-card-types .item._inactive img {
+    opacity: 0.4;
+}
+
+.antom-form-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.antom-form-group .field{
+    flex: 1 1 200px; /* flex-grow: 1, flex-shrink: 1, flex-basis: 200px */
+}
+
+.antom-three-ds-modal .modal-inner-wrap {
+    width: 550px;
+    height: 800px;
+}
+
+.antom-three-ds-modal.modal-popup .modal-content {
+    padding-left: 0;
+    padding-right: 0;
+    scrollbar-gutter: stable;
+}
+
+.antom-payment-method-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .antom-horizontal-card-types .item {
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    /* 移动端modal响应式样式 */
+    .antom-three-ds-modal .modal-inner-wrap {
+        max-width: 80%;
+        max-height: 80%;
+        width: none;
+        height: none;
+    }
+}
