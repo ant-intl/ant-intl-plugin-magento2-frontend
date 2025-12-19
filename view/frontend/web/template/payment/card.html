@@ -5,120 +5,19 @@
                class="radio"
                data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod"/>
         <label data-bind="attr: {'for': getCode()}">
-            <img data-bind="attr: {src: require.toUrl('Antom_Frontend/images/Card.svg')}" alt="Alipay CN" class="antom-payment-method-logo" />
+            <img data-bind="attr: {src: require.toUrl('Antom_Frontend/images/Card.svg')}" alt="Credit Card" class="antom-payment-method-logo" />
             <span data-bind="text: getTitle()"></span>
         </label>
     </div>
 
-    <div class="payment-method-content">
-
-        <form class="form" data-bind="attr: {'id': getCode() + '-form'}">
-            <fieldset class="fieldset payment items ccard" data-bind="attr: {id: 'payment_form_' + getCode()}">
-                <div class="field type">
-                    <div class="control">
-                        <ul class="credit-card-types antom-horizontal-card-types">
-                            <!-- ko foreach: {data: getAvailableCards(), as: 'item'} -->
-                            <li class="item" data-bind="css: {
-                                                         _active: $parent.creditCardType() == item.value || $parent.creditCardType() == null,
-                                                         _inactive: $parent.creditCardType() != null && $parent.creditCardType() != item.value
-                                                         } ">
-                                <img data-bind="attr: {
-                                    'src': item.logo,
-                                    'alt': item.type,
-                                    'title': item.type
-                                    }" class="card-brand-icon">
-                            </li>
-                            <!--/ko-->
-                        </ul>
-                    </div>
-                </div>
-                <div class="field required">
-                    <label data-bind="attr: {for: getCode() + '_cc_number'}" class="label">
-                        <span><!-- ko i18n: 'Card number'--><!-- /ko --></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" name="payment[cc_number]" value=""
-                               data-bind="attr: {
-                                            autocomplete: off,
-                                            id: getCode() + '_cc_number',
-                                            title: $t('Card Number'),
-                                            'data-container': getCode() + '-cc-number',
-                                            'data-validate': JSON.stringify({'required-entry':true, 'validate-cc-number':'#' + getCode() + '_cc_number', 'antom-validate-card-type': getCcAvailableTypesValues()})},
-                                      value: creditCardNumber,
-                                      valueUpdate: 'keyup',
-                                      event: { blur: validateField.bind($data, 'cc_number') }"/>
-                    </div>
-                </div>
-                <div class="field required">
-                    <label data-bind="attr: {for: getCode() + '_cc_holder_name'}" class="label">
-                        <span><!-- ko i18n: 'Card holder'--><!-- /ko --></span>
-                    </label>
-                    <div class="control">
-                        <input type="text"
-                               name="payment[cc_holder_name]"
-                               data-bind="attr: {
-                                            id: getCode() + '_cc_holder_name',
-                                            title: $t('Holder Name'),
-                                            'data-container': getCode() + '-cc-holder-name',
-                                            'data-validate': JSON.stringify({'required-entry':true})
-                                        },
-                                        value: creditCardHolderName,
-                                        valueUpdate: 'keyup',
-                                        event: { blur: validateField.bind($data, 'cc_holder_name') }"/>
-                    </div>
-                </div>
-                <div class="fields antom-form-group">
-                    <div class="field required">
-                        <label data-bind="attr: {for: getCode() + '_cc_exp'}" class="label">
-                            <span><!-- ko i18n: 'Expiry date'--><!-- /ko --></span>
-                        </label>
-                        <div class="control">
-                            <input type="text"
-                                   name="payment[cc_exp]"
-                                   placeholder="MM/YY"
-                                   autocomplete="off"
-                                   data-bind="attr: {
-                                                id: getCode() + '_cc_exp',
-                                                title: $t('Expiration Date'),
-                                                'data-container': getCode() + '-cc-exp',
-                                                'data-validate': JSON.stringify({
-                                                            'required-entry': true,
-                                                            'validate-cc-exp-mm-yy': true
-                                                        })},
-                                          value: creditCardExpMonth,
-                                          valueUpdate: 'keyup',
-                                          event: {
-                                            blur: validateField.bind($data, 'cc_exp')
-                                          }" />
-                        </div>
-                    </div>
-                    <div class="field required">
-                        <label data-bind="attr: {for: getCode() + '_cc_cid'}" class="label">
-                            <span><!-- ko i18n: 'Card code'--><!-- /ko --></span>
-                        </label>
-                        <div class="control">
-                            <input type="text"
-                                   autocomplete="off"
-                                   name="payment[cc_cid]"
-                                   value=""
-                                   maxlength="4"
-                                   inputmode="numeric"
-                                   data-bind="attr: {id: getCode() + '_cc_cid',
-                                        title: $t('Card Verification Number'),
-                                        'data-container': getCode() + '-cc-cvv',
-                                        'data-validate': JSON.stringify({'required-entry': true, 'antom-validate-cc-cvn': '#' + getCode() + '_cc_number'})},
-                                        value: creditCardVerificationNumber,
-                                        event: { blur: validateField.bind($data, 'cc_cid') }" />
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
+    <div class="payment-method-content" data-bind="afterRender: afterRender">
+        <div id="antom-payment-element-container" data-bind-ignore></div>
         <div class="payment-method-billing-address">
             <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
             <!-- ko template: getTemplate() --><!-- /ko -->
             <!--/ko-->
         </div>
+
         <div class="actions-toolbar">
             <div class="primary">
                 <button class="action primary checkout"
