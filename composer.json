@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "name": "antom-magento/magento2-frontend",
+    "name": "antom/magento2-frontend",
     "description": "Antom frontend module for magento 2",
     "require": {
         "magento/framework": ">=103.0.2",
