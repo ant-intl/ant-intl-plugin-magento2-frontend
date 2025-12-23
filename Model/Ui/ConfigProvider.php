@@ -10,7 +10,7 @@ use Magento\Checkout\Model\ConfigProviderInterface;
 /**
  * Class ConfigProvider
  */
-final class ConfigProvider implements ConfigProviderInterface
+class ConfigProvider implements ConfigProviderInterface
 {
     const ALIPAY_CODE = 'antom_alipay_cn';
     const CARD_CODE = 'antom_card';
