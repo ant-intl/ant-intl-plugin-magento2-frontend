@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "name": "antom/magento2-frontend",
     "description": "Antom frontend module for magento 2",
     "require": {

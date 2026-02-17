@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="marmot-cloud" type="host">*.marmot-cloud.com</value>
+                <value id="alipay-objects" type="host">*.alipayobjects.com</value>
+                <value id="antom" type="host">*.antom.com</value>
+                <value id="alipay" type="host">*.alipay.com</value>
+                <value id="alicdn" type="host">*.alicdn.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="alipay-connect" type="host">*.alipay.com</value>
+                <value id="alipay-objects-connect" type="host">*.alipayobjects.com</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="alipay-frame" type="host">*.alipay.com</value>
+                <value id="alipay-objects-frame" type="host">*.alipayobjects.com</value>
+                <value id="antom-frame" type="host">*.antom.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="alipay-img" type="host">*.alipay.com</value>
+                <value id="alipay-objects-img" type="host">*.alipayobjects.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>
